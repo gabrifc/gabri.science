@@ -1,0 +1,124 @@
+---
+/**
+ * VideoFigshare.astro
+ *
+ * When the URL contains ?file={id}, extracts the file ID and renders
+ * a native <video> element pointing directly at that file via Figshare's
+ * ndownloader — so only the specific video is shown, full-width.
+ *
+ * Falls back to the iframe widget (shows the full dataset) when no
+ * file ID is present in the URL.
+ *
+ * Usage:
+ *   <VideoFigshare
+ *     url="https://figshare.com/articles/dataset/.../20208220?file=36119503"
+ *     label="Video S1"
+ *     caption="Stimulating the autophagic–lysosomal axis enhances host defense against fungal infection."
+ *     doi="10.6084/m9.figshare.20208220"
+ *   />
+ */
+
+interface Props {
+  /** Full Figshare URL — article ID and optional ?file= ID are parsed automatically */
+  url: string;
+  /** Caption text shown below the video */
+  caption: string;
+  /** Optional figure label, e.g. "Video S1" or "Supplementary Video 2" */
+  label?: string;
+  /** Optional DOI for the Figshare deposit */
+  doi?: string;
+  /** Loop the video (default: false) */
+  loop?: boolean;
+}
+
+const { url, caption, label, doi, loop = false } = Astro.props;
+
+/** Parse article ID and optional file ID out of any Figshare URL */
+function parseUrl(figshareUrl: string) {
+  const articleMatch = figshareUrl.match(/\/(\d+)(?:\?|$)/);
+  const fileMatch    = figshareUrl.match(/[?&]file=(\d+)/);
+  return {
+    articleId: articleMatch?.[1] ?? '',
+    fileId:    fileMatch?.[1]    ?? null,
+  };
+}
+
+const { articleId, fileId } = parseUrl(url);
+
+// Direct CDN link for the specific file (triggers redirect to Figshare's CDN)
+const videoSrc       = fileId ? `https://figshare.com/ndownloader/files/${fileId}` : null;
+const figsharePageUrl = `https://figshare.com/articles/${articleId}`;
+---
+
+<figure class="not-prose my-8 w-full overflow-hidden rounded-xl bg-gray-900/80 ring-1 ring-white/10">
+
+  {videoSrc ? (
+    <!-- ── Direct video embed (specific file via ?file= param) ──────── -->
+    <video
+      src={videoSrc}
+      controls
+      preload="metadata"
+      loop={loop || undefined}
+      class="block w-full"
+      aria-label={label ? `${label}: ${caption}` : caption}
+    >
+      <p class="p-4 text-sm text-gray-400">
+        Your browser does not support HTML5 video.{' '}
+        <a href={videoSrc} class="text-cyan-400 underline hover:text-cyan-300">
+          Download the video.
+        </a>
+      </p>
+    </video>
+  ) : (
+    <!-- ── Fallback: Figshare widget (shows full dataset file list) ─── -->
+    <div class="relative w-full" style="padding-bottom: 56.25%;">
+      <iframe
+        src={`https://widgets.figshare.com/articles/${articleId}/embed?show_title=0`}
+        class="absolute inset-0 h-full w-full"
+        allowfullscreen
+        frameborder="0"
+        loading="lazy"
+        title={caption}
+      ></iframe>
+    </div>
+  )}
+
+  <!-- ── Caption bar ──────────────────────────────────────────────────── -->
+  <figcaption class="flex items-start justify-between gap-4 border-t border-white/10 px-4 py-3">
+
+    <p class="text-sm leading-relaxed text-gray-300">
+      {label && (
+        <span class="mr-1.5 font-semibold text-cyan-400">{label}.</span>
+      )}
+      {caption}
+      {doi && (
+        <span class="ml-1.5 text-gray-500">
+          DOI:{' '}
+          <a
+            href={`https://doi.org/${doi}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-400 underline underline-offset-2 transition-colors hover:text-cyan-400"
+          >
+            {doi}
+          </a>
+        </span>
+      )}
+    </p>
+
+    <!-- Link back to Figshare source -->
+    <a
+      href={figsharePageUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="View on Figshare"
+      title="View on Figshare"
+      class="mt-0.5 shrink-0 text-gray-600 transition-colors hover:text-cyan-400"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4" aria-hidden="true">
+        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm.75 14.5h-1.5v-6h1.5v6Zm0-7.5h-1.5V7.5h1.5V9Z"/>
+      </svg>
+    </a>
+
+  </figcaption>
+</figure>

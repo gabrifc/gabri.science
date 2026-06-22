@@ -1,0 +1,55 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/navbar.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title?: string;
+  navDark?: boolean;
+}
+
+const { title = "Gabriel Forn-Cuní", navDark = false } = Astro.props;
+---
+
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <!-- Runs before paint to avoid flash of wrong theme -->
+    <script is:inline>
+      if (localStorage.getItem("color-scheme") === "light") {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    <script>
+      import "@tailwindplus/elements";
+      document.getElementById("theme-toggle")?.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.toggle("dark");
+        localStorage.setItem("color-scheme", isDark ? "dark" : "light");
+      });
+
+      const navWrapper = document.getElementById("nav-wrapper");
+      let lastScrollY = window.scrollY;
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY && currentScrollY > 80) {
+          navWrapper?.classList.add("-translate-y-full");
+        } else {
+          navWrapper?.classList.remove("-translate-y-full");
+        }
+        lastScrollY = currentScrollY;
+      }, { passive: true });
+    </script>
+  </head>
+  <body class="bg-slate-100 dark:bg-gray-950 text-gray-500 dark:text-gray-300 min-h-screen">
+    <div id="nav-wrapper" class={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300${navDark ? ' dark' : ''}`}>
+      <Navbar navDark={navDark} />
+    </div>
+    <slot />
+    <Footer navDark={navDark} />
+  </body>
+</html>

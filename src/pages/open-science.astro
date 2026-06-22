@@ -1,0 +1,99 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Section from "../components/Section.astro";
+import TextBlock from "../components/TextBlock.astro";
+---
+
+<Layout title="Open Science — Gabriel Forn-Cuní">
+
+  <PageHeader
+    title="Open Science"
+    gradient="bg-gradient-indigo-teal"
+    description="Open science is a critical concept not only for sharing, but also to promote the robustness and reproducibility of research. All my research work (publications, raw data, and code) is available in open access repositories, and has been disseminated through scientific conferences, press releases, and social networks."
+  >
+    <div class="flex items-center gap-4 mt-5">
+      <a
+        href="https://github.com/gabrifc"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+      >
+        <svg viewBox="0 0 24 24" class="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true">
+          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+        </svg>
+        GitHub
+      </a>
+      <a
+        href="https://www.ncbi.nlm.nih.gov/gds/?term=forn-cuni"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+      >
+        <svg viewBox="0 0 150 95.3" class="w-5 h-3 shrink-0" fill="currentColor" aria-hidden="true">
+          <path d="m 111.009,95.3 26.1-47.7-26-47.6h6.5c3.6 0 7.9 2.6 9.6 5.7l22.8 41.9-22.9 41.9c-1.7 3.2-6.1 5.7-9.6 5.7h-6.5z"/>
+          <path d="M8.7 0C3.9 0 0 3.9 0 8.8V86.5c0 4.8 3.9 8.8 8.7 8.8H104.5l26.1-47.7L104.5 0Zm5.9 26.4h7.8l19.2 31.4h.1V26.4h7V69H40.9L21.8 37.7h-.2V69h-7ZM56 26.4h7.4V69H56Zm14.7 0h7.4v16.9h19.2V26.4h7.3V69h-7.3V49.8H78.1V69h-7.4z"/>
+        </svg>
+        NCBI GEO
+      </a>
+    </div>
+  </PageHeader>
+
+  <Section class="py-12">
+    <TextBlock>
+      <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Tools and databases for the community</h2>
+      <p class="mt-6">
+        Beyond sharing my own outputs, I have created open access tools that are used by researchers
+        from all over the world:
+      </p>
+      <h3 class="mt-8 text-lg font-semibold text-gray-800 dark:text-white">
+        <a href="https://github.com/gabrifc/raincloud-shiny" target="_blank" rel="noopener" class="transition-colors hover:text-accent-cyan">Raincloud-shiny</a>
+      </h3>
+      <p class="mt-2">
+        Raincloud-shiny is a Shiny-powered web GUI interface to create raincloud plots,
+        a visualization that shows the raw data, its distribution, and summary statistics together
+        rather than hiding them behind a bar chart. By making transparent plotting available through
+        a browser, with no coding required, it lowers the barrier to honest data presentation. The
+        source is open on
+        <a href="https://github.com/gabrifc/raincloud-shiny" target="_blank" rel="noopener" class="transition-colors hover:text-accent-cyan">GitHub</a>.
+      </p>
+      <h3 class="mt-8 text-lg font-semibold text-gray-800 dark:text-white">
+        <a href="https://doi.org/10.1093/database/baac028" target="_blank" rel="noopener" class="transition-colors hover:text-accent-magenta">XePhIR</a>
+      </h3>
+      <p class="mt-2">
+        Together with A. Groenewoud, I built XePhIR, the (zebrafish) xenograft phenotype interactive
+        repository, to standardize protocols and share data regarding zebrafish xenograft phenotypes,
+        thus enhancing reproducibility and showcasing the appeal and applicability of the model. The
+        platform is described in
+        <a href="https://doi.org/10.1093/database/baac028" target="_blank" rel="noopener" class="transition-colors hover:text-accent-magenta">Groenewoud, Forn-Cuní et al., <em>Database (Oxford)</em>, 2022</a>.
+      </p>
+    </TextBlock>
+  </Section>
+
+  <Section class="py-12">
+    <TextBlock>
+      <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Open Access</h2>
+      <p class="mt-6">
+        Raw data and materials from my publications are deposited in public repositories:
+      </p>
+      <p class="mt-6">
+        <span class="font-semibold text-gray-700 dark:text-gray-200">Sequencing and transcriptomic data.</span>
+        Sequencing and transcriptomic data generated in my studies are openly accessible at
+        <a href="https://www.ncbi.nlm.nih.gov/sra?term=forn-cuni" target="_blank" rel="noopener" class="transition-colors hover:text-accent-cyan">SRA</a>
+        and
+        <a href="https://www.ncbi.nlm.nih.gov/gds/?term=forn-cuni" target="_blank" rel="noopener" class="transition-colors hover:text-accent-cyan">GEO</a>.
+      </p>
+      <p class="mt-6">
+        <span class="font-semibold text-gray-700 dark:text-gray-200">Code.</span>
+        Some of my code can be found on
+        <a href="https://github.com/gabrifc" target="_blank" rel="noopener" class="transition-colors hover:text-accent-magenta">GitHub</a>.
+      </p>
+      <p class="mt-6">
+        <span class="font-semibold text-gray-700 dark:text-gray-200">Imaging data.</span>
+        Confocal microscopy datasets accompanying my work can be found at the BioImage Archive
+        (e.g., <a href="https://www.ebi.ac.uk/bioimage-archive/galleries/S-BSST698" target="_blank" rel="noopener" class="transition-colors hover:text-accent-yellow">Acc: S-BSST698</a>).
+      </p>
+    </TextBlock>
+  </Section>
+
+</Layout>

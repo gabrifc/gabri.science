@@ -1,0 +1,35 @@
+---
+interface Props {
+  title?: string;
+  source: string;
+  abstract: string;
+}
+
+const { title, abstract, source } = Astro.props as Props;
+---
+
+<header class="relative flex flex-col gap-6 items-center min-h-screen !w-full !mx-0 !px-0 !pb-0">
+  <!-- Video background -->
+  <div class="absolute inset-0 z-0">
+    <video
+      class="absolute !w-full h-full object-cover object-top-left"
+      autoplay
+      muted
+      loop
+      playsinline
+    >
+      <source src={source} type="video/mp4" />
+    </video>
+    <div class="absolute inset-0 bg-black/40"></div>
+  </div>
+
+  <!-- Text content -->
+  <div class="relative z-10 flex flex-col flex-1 justify-center items-center text-white px-4">
+    {title && (
+      <h1 class="text-3xl md:text-4xl font-semibold max-w-3xl mx-auto mb-10" set:html={title}></h1>
+    )}
+    <div class="text-center max-w-3xl">
+      <p class="text-lg md:text-xl" set:html={abstract}></p>
+    </div>
+  </div>
+</header>

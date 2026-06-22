@@ -1,0 +1,144 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Video from "../../components/Video.astro";
+import VideoGrid from "../../components/VideoGrid.astro";
+import Section from "../../components/Section.astro";
+import TextBlock from "../../components/TextBlock.astro";
+---
+
+<Layout title="Macrophage immunometabolism — Gabriel Forn-Cuní">
+
+  <PageHeader
+    title="Macrophage immunometabolism"
+    gradient="bg-gradient-pink-teal"
+    description="Macrophages are among the most versatile cells in the body, and their ability to read and respond to their environment is central to, among others, how infections establish; how tumors evade adaptive immunity; and how tissues repair, or fail to do so. Metabolic reprogramming is emerging as a central determinant of this plasticity. Unraveling the metabolic reprogramming behind macrophage plasticity will generate a vast amount of knowledge on disease progression and open novel therapeutic opportunities, but their dynamic nature and remarkable population diversity require study in their intact environmental contexts."
+  />
+
+  <Section class="pb-12">
+    <Video
+      source="/assets/macrophage-immunometabolism-1.mp4"
+      label="Video 1"
+      caption="Timelapse showing autophagy dynamics in macrophages during fungal infection. From Forn-Cuní et al., Autophagy, 2024."
+      doi="10.1080/15548627.2022.2090727"
+    />
+  </Section>
+
+  <Section class="py-12">
+    <TextBlock>
+      <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Research statement</h2>
+      <p class="mt-6">
+        In my previous research, I have shown how lipid dysregulation impairs acute inflammatory
+        responses in immune-infiltrated tissues; how pathogenic autophagy downregulation impairs
+        macrophage function enabling establishment of fungal infection; how glycolytic byproducts
+        from uveal melanoma polarize macrophages to drive angiogenesis and metastasis; or how
+        myelin recycling reconfigures them to promote glioblastoma growth through lipid metabolism.
+        In all these cases, <span class="font-semibold text-accent-cyan">altered metabolism is not a
+        consequence, but a determinant for macrophage response as a pathogenic driver in the
+        ecosystem of the disease</span>. This is consistent with a growing body of evidence
+        demonstrating that metabolites (e.g., succinate, itaconate, lipid-derived signals) are not
+        passive correlates of macrophage function, but active regulators of transcriptional and
+        epigenetic programs. Most mechanisms through which these metabolic states are acquired and
+        their effect in the evolution of disease, however, remain largely unknown.
+      </p>
+      <p class="mt-6">
+        One reason for this knowledge gap is that <span class="font-semibold text-accent-magenta">macrophage
+        metabolic interactions cannot be uncoupled from both its ontogeny and its
+        microenvironment</span>. For example, it has recently been shown how itaconate has opposite
+        polarization effects in tissue-resident macrophages than in bone marrow derived macrophages
+        depending on their activation context. Yet most studies have been conducted in vitro, where
+        the complex metabolic interplay between macrophages and other cells within the tissue
+        microenvironment is lost; or in animal models that involve tissue analysis at a single end
+        timepoint, relying on a posteriori pseudotime approaches to infer behavioral dynamics rather
+        than directly observing them.
+      </p>
+      <p class="mt-6">
+        My central hypothesis is that <span class="font-semibold text-accent-yellow">understanding
+        macrophage metabolic reprogramming within its intact tissue environment will reveal metabolic
+        nodes that are therapeutically relevant</span>. This matters most in contexts where
+        macrophages dictate disease outcome and current therapies have failed, such as in
+        life-threatening infections affecting the increasing immunosuppressed population, or in
+        tumors that are refractory to immune checkpoint blockade. In those situations, harnessing
+        macrophage metabolic reprogramming represents an extraordinary therapeutic opportunity.
+      </p>
+      <p class="mt-6">
+        To address this, I have complemented my research by <a href="/research/zebrafish" class="hover:text-accent-cyan transition-colors">developing and validating zebrafish
+        models</a> that allow longitudinal, real-time visualization and quantification of
+        macrophage behavior within a whole living disease context, including models for mycobacterial
+        and fungal infections, and orthotopic and metastatic (patient-derived) cancer xenografts.
+        For example, I used these models to mechanistically show how decoupling lipid macrophage
+        metabolism inhibits glioblastoma growth, or how stimulating autophagic flux in macrophages
+        increases survival to invasive aspergillosis by 20%, in the absence of adaptive immunity or
+        antibiotics.
+      </p>
+    </TextBlock>
+  </Section>
+
+  <Section class="py-12">
+    <VideoGrid
+      videos={[
+        { source: "/assets/macrophage-immunometabolism-2.mp4" },
+        { source: "/assets/macrophage-immunometabolism-3.mp4", loop: true },
+      ]}
+      label="Videos 2–3"
+      caption="<span class='font-semibold text-accent-magenta'>Macrophages</span> (magenta) phagocytosing <span class='font-semibold text-accent-yellow'>TME-derived injected myelin</span> (yellow) to become lipid-laden macrophages, imaged in live zebrafish embryos starting 2h (left) and 24h post-injection (right). Forn-Cuní, unpublished, 2025."
+    />
+  </Section>
+
+  <Section class="py-12">
+    <TextBlock>
+      <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Relevant Publications</h2>
+      <ol class="mt-6 space-y-3 list-decimal list-inside">
+        <li>
+          <a href="https://doi.org/10.1016/j.cell.2024.07.030" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Kloosterman et al., <em>Cell</em>, 2024
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1007/s10456-024-09930-y" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Yin and Forn-Cuní et al., <em>Angiogenesis</em>, 2024
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1128/mbio.03024-22" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Boland et al., <em>mBio</em>, 2023
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.3390/biology12020323" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Hu et al., <em>Biology</em>, 2023
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1080/15548627.2022.2090727" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Forn-Cuní et al., <em>Autophagy</em>, 2022
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1038/s41419-020-2477-1" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Zhang et al., <em>Cell Death Dis.</em>, 2020
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1371/journal.ppat.1007329" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Zhang et al., <em>PLoS Pathog.</em>, 2019
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1530/JOE-14-0398" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Forn-Cuní et al., <em>J. Endocrinol.</em>, 2015
+          </a>
+        </li>
+      </ol>
+    </TextBlock>
+  </Section>
+
+</Layout>

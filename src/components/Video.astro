@@ -1,0 +1,119 @@
+---
+/**
+ * Video.astro
+ *
+ * Self-hosted video player with an optional scientific figure caption,
+ * source link (DOI or generic URL), and figure label.
+ *
+ * Usage:
+ *   <Video
+ *     source="/videos/movie-s3.mp4"
+ *     label="Video S1"
+ *     caption="Stimulating the autophagic–lysosomal axis enhances host defense against fungal infection."
+ *     doi="10.6084/m9.figshare.20208220"
+ *   />
+ *
+ *   <!-- Generic link instead of DOI -->
+ *   <Video
+ *     source="/videos/header.mp4"
+ *     caption="Confocal timelapse of zebrafish macrophages."
+ *     href="https://example.com/paper"
+ *     hrefLabel="Full paper"
+ *   />
+ */
+
+interface Props {
+  /** Path or URL to the MP4 video file */
+  source: string;
+  /** Caption text shown below the video */
+  caption?: string;
+  /** Optional figure label, e.g. "Video S1" — shown in cyan */
+  label?: string;
+  /** DOI string (without the https://doi.org/ prefix) */
+  doi?: string;
+  /** Generic source URL — used when doi is not set */
+  href?: string;
+  /** Link text when using href instead of doi (default: "Source") */
+  hrefLabel?: string;
+}
+
+const {
+  source,
+  caption,
+  label,
+  doi,
+  href,
+  hrefLabel = 'Source',
+} = Astro.props;
+
+const sourceHref  = doi ? `https://doi.org/${doi}` : href;
+const sourceLabel = doi ? doi : hrefLabel;
+const hasCaption  = caption || sourceHref;
+---
+
+<figure class="not-prose m-0 p-0 !w-full overflow-hidden">
+
+  <!-- ── Video player ──────────────────────────────────────────────────── -->
+  <video
+    class="block w-full h-auto mt-0"
+    
+    controls
+    muted
+    
+    playsinline
+    preload="metadata"
+    controlslist="nodownload"
+    disablepictureinpicture
+    oncontextmenu="return false;"
+    aria-label={label && caption ? `${label}: ${caption}` : caption}
+  >
+    <source src={source} type="video/mp4" />
+    <p class="p-4 text-sm text-gray-400">
+      Your browser does not support HTML5 video.
+    </p>
+  </video>
+
+  <!-- ── Caption bar (only rendered when caption or link is present) ───── -->
+  {hasCaption && (
+    <figcaption class="flex items-start justify-between gap-4 border-t border-gray-200 dark:border-white/10 px-4 py-3">
+
+      <p class="text-base leading-relaxed text-gray-500 dark:text-gray-300">
+        {label && (
+          <span class="mr-1.5 font-semibold text-accent-cyan">{label}.</span>
+        )}
+        <span set:html={caption} />
+        {sourceHref && (
+          <span class="ml-1.5 text-gray-400 dark:text-gray-500">
+            {doi ? 'DOI:' : ''}{' '}
+            <a
+              href={sourceHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="underline underline-offset-2 transition-colors hover:text-accent-cyan text-base"
+            >
+              {sourceLabel}
+            </a>
+          </span>
+        )}
+      </p>
+
+      <!-- External link icon -->
+      {sourceHref && (
+        <a
+          href={sourceHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View source"
+          title="View source"
+          class="mt-0.5 shrink-0 text-gray-400 dark:text-gray-600 transition-colors hover:text-accent-cyan"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-4" aria-hidden="true">
+            <path fill-rule="evenodd" d="M4.25 5.5a.75.75 0 0 0-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 0 0 .75-.75v-4a.75.75 0 0 1 1.5 0v4A2.25 2.25 0 0 1 12.75 17h-8.5A2.25 2.25 0 0 1 2 14.75v-8.5A2.25 2.25 0 0 1 4.25 4h5a.75.75 0 0 1 0 1.5h-5Zm6.5-3a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0V3.56l-4.72 4.72a.75.75 0 0 1-1.06-1.06l4.72-4.72h-1.69a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd"/>
+          </svg>
+        </a>
+      )}
+
+    </figcaption>
+  )}
+
+</figure>

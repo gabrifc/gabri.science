@@ -1,0 +1,156 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import VideoGrid from "../../components/VideoGrid.astro";
+import Section from "../../components/Section.astro";
+import TextBlock from "../../components/TextBlock.astro";
+---
+
+<Layout title="Zebrafish disease models — Gabriel Forn-Cuní">
+
+  <PageHeader
+    title="Zebrafish disease models"
+    gradient="bg-gradient-amber-teal"
+    description="Translating fundamental discoveries into therapies depends on models that capture human disease in a living context. Mammalian models are costly and low-throughput, while most in vitro systems lose the complex interplay between immune cells, pathogens, tumors, and surrounding tissues. Zebrafish larvae offer a third option: a small, transparent vertebrate with a functional innate immune system within days of fertilization. In these larvae, we can watch infection, cancer, and inflammation unfold in real time, at single-cell resolution, across a whole organism. But that potential is only realized if what we see in zebrafish models reflects human disease."
+  />
+
+  <Section class="py-12">
+    <TextBlock>
+      <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Zebrafish models for innate immune research</h2>
+      <p class="mt-6">
+        In my career, I have developed and validated zebrafish embryonic and larval models that
+        enable real-time tracking and quantification of macrophage behavior within a whole living
+        disease context. These include models of mycobacterial and fungal infection, as well as
+        orthotopic and metastatic (patient-derived) cancer xenografts. The development of these
+        models is favored by their alignment with the 3Rs principle of animal research, promoting
+        ethical and responsible research practices. However, it is crucial to be aware of the
+        nuances and limitations of different experimental models, and in translational research,
+        mechanistic insights are only valuable if the models in which they are discovered allow
+        their therapeutic translation. This is why I have focused an important part of my career on
+        studying and improving the translatability of these models.
+      </p>
+      <p class="mt-6">
+        This realization came early in my career. In my first first-author publication, we
+        characterized 8 complement <em>c3</em> genes in zebrafish, including a teleost-specific
+        duplication event that gave rise to an exclusive paralog with antagonistic immune function,
+        contrasting with only one <em>C3</em> gene in humans. This is a common occurrence among
+        immune genes in zebrafish, as we characterized for interferon-induced proteins with
+        tetratricopeptide repeats (<em>ifits</em>), perforins, or caspases and inflammasome
+        components. How do we translate the function of genes that do not exist in another organism?
+        If one of the main components of the complement cascade system, sitting at the base of
+        inflammatory processes, does not translate, what does it mean for all inflammatory research
+        in zebrafish? This is particularly significant given the debates questioning the
+        applicability of murine models for studying human inflammatory diseases due to controversial
+        differences in gene modulation during inflammation. If murine models are questioned, what is
+        the relevance of evolutionarily distant species for modeling human diseases?
+      </p>
+      <p class="mt-6">
+        During my PhD, I showed that, despite species-specific sensitivities and physiologies (like
+        the <em>c3</em> paralogs characterized above), zebrafish exhibit a conserved inflammatory
+        response, mirroring key aspects of mammalian inflammatory signaling, formally validating its
+        translational potential for inflammatory research. This lesson has guided part of my career:
+        in my pursuit of bringing zebrafish studies into clinical relevance, my focus has broadened
+        from specific genes (e.g., <em>c3</em> duplications, perforins) to pathways (e.g., the acute
+        inflammatory response or oxidative phosphorylation), to cellular and tissue dynamics (e.g.,
+        the innate immune response to <em>Aspergillus</em> conidia, macrophage recruitment and
+        angiogenesis), while the spatiotemporal resolution has increased from whole organism (bulk
+        RNA expression during development), to tissues (liver- or kidney-specific responses), to
+        specific cell types inside a whole-organism context (phagocytes interacting with conidia at
+        infection onset, single-cell transcriptomics).
+      </p>
+      <p class="mt-6">
+        While I am fully convinced that the zebrafish constitutes an exceptional platform for
+        real-time study of the bases of immunometabolism regulation in vivo, I am equally aware that
+        current models may not fully recapitulate the complex metabolic landscape of human
+        macrophages and that, currently, the translation from zebrafish to the clinic is
+        challenging. That is why I believe that, to study innate immune cell interactions, zebrafish
+        models excel in an integrated setting with mice and human data.
+      </p>
+    </TextBlock>
+  </Section>
+
+  <Section class="py-12">
+    <TextBlock>
+      <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Improving drug screens</h2>
+      <p class="mt-6">
+        A recent focus of mine has been a major limitation of many zebrafish drug screens: the
+        neglect of drug pharmacology, which leads to a high number of false negatives. This is an
+        aspect previously overlooked for technological reasons. To address this, we developed a
+        standardized workflow to integrate pharmacokinetic (PK) models that quantify drug uptake for
+        both waterborne and direct-injection routes of administration, and fluorescent-based
+        pharmacodynamic (PD) readouts that quantify drug activity. The resulting PK/PD models reflect
+        exposure-response relationships that fall within an order of magnitude of mouse and human
+        models and correlate drug concentrations in zebrafish with those observed in patients.
+      </p>
+    </TextBlock>
+  </Section>
+
+  <Section class="py-12">
+    <TextBlock>
+      <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-4">Relevant Publications</h2>
+      <ol class="mt-6 space-y-3 list-decimal list-inside">
+        <li>
+          <a href="https://doi.org/10.64898/2026.05.29.728504" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Forn-Cuní et al., <em>bioRxiv</em>, 2026
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1016/j.drudis.2024.104163" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Antunes et al., <em>Drug Discov. Today</em>, 2024
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.3390/ph16040598" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Yin et al., <em>Pharmaceuticals</em>, 2023
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1093/database/baac028" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Groenewoud and Forn-Cuní et al., <em>Database (Oxford)</em>, 2022
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1371/journal.pone.0252948" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Keizer et al., <em>PLoS One</em>, 2021
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.3390/cells8080901" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Forn-Cuní, Meijer and Varela, <em>Cells</em>, 2019
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1038/srep41905" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Forn-Cuní et al., <em>Sci. Rep.</em>, 2017
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1159/000431287" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Varela et al., <em>J. Innate Immun.</em>, 2016
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1371/journal.pone.0100015" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Varela et al., <em>PLoS One</em>, 2014
+          </a>
+        </li>
+        <li>
+          <a href="https://doi.org/10.1371/journal.pone.0099673" target="_blank" rel="noopener noreferrer"
+             class="transition-colors">
+            Forn-Cuní et al., <em>PLoS One</em>, 2014
+          </a>
+        </li>
+      </ol>
+    </TextBlock>
+  </Section>
+
+</Layout>

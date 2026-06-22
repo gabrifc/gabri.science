@@ -1,0 +1,19 @@
+---
+import Layout from "./Layout.astro";
+import Navbar from "../components/navbar.astro";
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Layout title={title}>
+  <div class="flex flex-col min-h-screen">
+    <Navbar />
+    <main class="flex-1">
+      <slot />
+    </main>
+  </div>
+</Layout>

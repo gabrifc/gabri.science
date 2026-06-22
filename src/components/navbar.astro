@@ -1,0 +1,135 @@
+---
+interface Props { navDark?: boolean; }
+const { navDark = false } = Astro.props;
+---
+<nav class={`relative !w-full ${navDark ? '' : 'bg-slate-100/70 dark:bg-gray-950/70'} backdrop-blur-md after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-gray-300 dark:after:bg-white/10`}>
+  <div class="!mx-0 px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <button type="button" command="--toggle" commandfor="mobile-menu" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-500 dark:text-gray-300 hover:bg-black/8 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-accent-magenta">
+          <span class="absolute -inset-0.5"></span>
+          <span class="sr-only">Open main menu</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="size-6 in-aria-expanded:hidden">
+            <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="size-6 not-in-aria-expanded:hidden">
+            <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-between">
+        <div class="flex shrink-0 items-center">
+          <a href="/" class="text-sm font-medium text-gray-800 dark:text-white">Gabriel Forn-Cuní</a>
+        </div>
+
+        <div class="hidden sm:ml-6 sm:block">
+          <div class="flex items-center space-x-4">
+
+            <a href="/cv-gabriel-forn-cuni.pdf" target="_blank" rel="noopener" class="rounded-md px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-300 hover:bg-black/8 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white">CV</a>
+
+            <!-- Research button (desktop) -->
+            <button
+              type="button"
+              command="--toggle"
+              commandfor="research-panel"
+              class="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-300 hover:bg-black/8 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white focus:outline-2 focus:-outline-offset-1 focus:outline-accent-magenta"
+            >
+              Research
+              <svg class="size-4 transition-transform duration-200 in-aria-expanded:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+              </svg>
+            </button>
+
+            <a href="/publications" class="rounded-md px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-300 hover:bg-black/8 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white">Publications</a>
+            <a href="/teaching" class="rounded-md px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-300 hover:bg-black/8 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white">Teaching</a>
+            <a href="/open-science" class="rounded-md px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-300 hover:bg-black/8 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white">Open Science</a>
+
+            <!-- Theme toggle -->
+            {!navDark && (
+              <button
+                id="theme-toggle"
+                aria-label="Toggle light/dark mode"
+                class="rounded-md p-2 text-gray-500 dark:text-gray-300 hover:bg-black/8 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white transition-colors"
+              >
+                <i class="fa-solid fa-sun icon-dark-only w-5 text-center" aria-hidden="true"></i>
+                <i class="fa-solid fa-moon icon-light-only w-5 text-center" aria-hidden="true"></i>
+              </button>
+            )}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full-width research submenu panel (desktop) -->
+  <el-disclosure
+    id="research-panel"
+    hidden
+    class={`block fixed top-16 left-0 right-0 z-50 ${navDark ? '' : 'bg-slate-100/85 dark:bg-gray-950/85'} backdrop-blur-md border-b border-gray-300 dark:border-white/10`}
+  >
+    <div class="px-2 sm:px-6 lg:px-8">
+      <div class="flex justify-end">
+        <div class="sm:ml-6 flex items-start space-x-4 py-2">
+          <div class="flex flex-col text-right">
+            <a href="/research/immunometabolism" class="px-3 py-1.5 text-sm text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Macrophage immunometabolism</a>
+            <a href="/research/zebrafish" class="px-3 py-1.5 text-sm text-gray-500 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Zebrafish models</a>
+          </div>
+          <span aria-hidden="true" class="invisible px-3 py-2 text-sm">Publications</span>
+          <span aria-hidden="true" class="invisible px-3 py-2 text-sm">Teaching</span>
+          <span aria-hidden="true" class="invisible px-3 py-2 text-sm">Open Science</span>
+          {!navDark && (
+            <span aria-hidden="true" class="invisible p-2"><span class="block size-5"></span></span>
+          )}
+        </div>
+      </div>
+    </div>
+  </el-disclosure>
+
+  <!-- Mobile menu -->
+  <el-disclosure id="mobile-menu" hidden class="block sm:hidden bg-white/8 dark:bg-black/8 backdrop-blur-md">
+    <div class="space-y-1 px-2 pt-2 pb-3">
+      <a href="/" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 dark:text-gray-300 hover:bg-black/8 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white">Home</a>
+      <a href="/cv-gabriel-forn-cuni.pdf" target="_blank" rel="noopener" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 dark:text-gray-300 hover:bg-black/8 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white">CV</a>
+
+      <div>
+        <button type="button" command="--toggle" commandfor="mobile-research"
+          class="flex w-full items-center justify-between rounded-md px-3 py-2 text-base font-medium text-gray-500 dark:text-gray-300 hover:bg-black/8 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white">
+          Research
+          <svg class="size-4 transition-transform in-aria-expanded:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+          </svg>
+        </button>
+        <el-disclosure id="mobile-research" hidden class="mt-1 space-y-1 pl-4">
+          <a href="/research/immunometabolism" class="block rounded-md px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-300 hover:bg-black/8 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white">Macrophage immunometabolism</a>
+          <a href="/research/zebrafish" class="block rounded-md px-3 py-2 text-sm font-medium text-gray-500 dark:text-gray-300 hover:bg-black/8 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white">Zebrafish models</a>
+        </el-disclosure>
+      </div>
+
+      <a href="/publications" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 dark:text-gray-300 hover:bg-black/8 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white">Publications</a>
+      <a href="/teaching" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 dark:text-gray-300 hover:bg-black/8 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white">Teaching</a>
+      <a href="/open-science" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 dark:text-gray-300 hover:bg-black/8 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white">Open Science</a>
+
+      {!navDark && (
+        <button
+          id="theme-toggle-mobile"
+          aria-label="Toggle light/dark mode"
+          class="flex w-full items-center gap-2 rounded-md px-3 py-2 text-base font-medium text-gray-500 dark:text-gray-300 hover:bg-black/8 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white"
+        >
+          <i class="fa-solid fa-sun icon-dark-only w-5 text-center" aria-hidden="true"></i>
+          <i class="fa-solid fa-moon icon-light-only w-5 text-center" aria-hidden="true"></i>
+          <span class="hidden dark:inline">Light mode</span>
+          <span class="inline dark:hidden">Dark mode</span>
+        </button>
+      )}
+    </div>
+  </el-disclosure>
+</nav>
+
+<script>
+  document.getElementById("theme-toggle-mobile")?.addEventListener("click", () => {
+    const isDark = document.documentElement.classList.toggle("dark");
+    localStorage.setItem("color-scheme", isDark ? "dark" : "light");
+  });
+</script>

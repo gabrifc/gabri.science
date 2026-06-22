@@ -1,0 +1,520 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHeader from "../components/PageHeader.astro";
+import TextBlock from "../components/TextBlock.astro";
+import Section from "../components/Section.astro";
+
+interface Publication {
+  authors: string;
+  title: string;
+  journal: string;
+  year: number;
+  doi?: string;
+  tags: string[];
+}
+
+const publications: Publication[] = [
+  // 2026
+  {
+    authors: "<strong>Forn-Cuní G</strong>, van Lieshout B, Koch B, Villellas C, Van Asten S, Lanckacker E, Stoops B, Vreeken RJ, Roymans D, Krekels EHJ, van Hasselt JGC, Spaink HP, van Wijk RC",
+    title: "Accelerating drug development in infectious diseases using zebrafish disease models supported by pharmacokinetic-pharmacodynamic modeling as new approach methodology (NAM)",
+    journal: "bioRxiv",
+    year: 2026,
+    doi: "10.64898/2026.05.29.728504",
+    tags: ["infections", "zebrafish", "first-author", "corresponding", "preprint"],
+  },
+  {
+    authors: "Zeng Y, Zhao G, Wu S, Hu B, <strong>Forn-Cuní G</strong>, Knol R, El Ghalbzouri A, Snaar-Jagalska E, Kros A",
+    title: "CD44-targeted lipid nanoparticles for enhanced CRISPR/Cas9 delivery in cancer gene editing",
+    journal: "J Control Release",
+    year: 2026,
+    doi: "10.1016/j.jconrel.2025.114598",
+    tags: ["cancer", "zebrafish"],
+  },
+  // 2025
+  {
+    authors: "Zhao G, Zeng Y, Cheng W, Karkampouna S, Papadopoulou P, Hu B, Zang S, Wezenberg E, <strong>Forn-Cuní G</strong>, Lopes-Bastos B, Kruithof-de Julio M, Kros A, Snaar-Jagalska BE",
+    title: "Peptide-Modified Lipid Nanoparticles Boost the Antitumor Efficacy of RNA Therapeutics",
+    journal: "ACS Nano",
+    year: 2025,
+    doi: "10.1021/acsnano.4c14625",
+    tags: ["cancer", "zebrafish"],
+  },
+  // 2024
+  {
+    authors: "Kloosterman DJ, Erbani J, Boon M, Farber M, Handgraaf SM, Ando-Kuri M, Sánchez-López E, Fontein B, Mertz M, Nieuwland M, Liu NQ, <strong>Forn-Cuní G</strong>, van der Wel NN, Grootemaat AE, Reinalda L, van Kasteren SI, de Wit E, Ruffell B, Snaar-Jagalska E, Petrecca K, Brandsma D, Kros A, Giera M, Akkari L",
+    title: "Macrophage-mediated myelin recycling fuels brain cancer malignancy",
+    journal: "Cell",
+    year: 2024,
+    doi: "10.1016/j.cell.2024.07.030",
+    tags: ["cancer", "zebrafish", "metabolism"],
+  },
+  {
+    authors: "Yin J, <strong>Forn-Cuní G</strong>, Surendran AM, Lopes-Bastos B, Pouliopoulou N, Jager MJ, Le Dévédec SE, Chen Q, Snaar-Jagalska BE",
+    title: "Lactate secreted by glycolytic conjunctival melanoma cells attracts and polarizes macrophages to drive angiogenesis in zebrafish xenografts",
+    journal: "Angiogenesis",
+    year: 2024,
+    doi: "10.1007/s10456-024-09930-y",
+    tags: ["cancer", "zebrafish", "metabolism", "first-author"],
+  },
+  {
+    authors: "Zhang L, Zhao G, Dalrymple T, Husiev Y, Bronkhorst H, <strong>Forn-Cuní G</strong>, Lopes-Bastos B, Snaar-Jagalska E, Bonnet S",
+    title: "Cyclic Ruthenium-Peptide Prodrugs Penetrate the Blood-Brain Barrier and Attack Glioblastoma upon Light Activation in Orthotopic Zebrafish Tumor Models",
+    journal: "ACS Cent Sci",
+    year: 2024,
+    doi: "10.1021/acscentsci.4c01173",
+    tags: ["cancer", "zebrafish"],
+  },
+  {
+    authors: "Zhao G, <strong>Forn-Cuní G</strong>, Scheers M, Lindenbergh PP, Yin J, Van Loosen Q, Passarini L, Chen L, Snaar-Jagalska BE",
+    title: "Simultaneous targeting of AMPK and mTOR is a novel therapeutic strategy against prostate cancer",
+    journal: "Cancer Letters",
+    year: 2024,
+    doi: "10.1016/j.canlet.2024.216657",
+    tags: ["cancer", "zebrafish", "metabolism"],
+  },
+  {
+    authors: "Antunes SS, <strong>Forn-Cuní G</strong>, Romeiro NC, Spaink HP, Verbeek FJ, Muzitano MF",
+    title: "Embryonic and larval zebrafish models for the discovery of new bioactive compounds against tuberculosis",
+    journal: "Drug Discov Today",
+    year: 2024,
+    doi: "10.1016/j.drudis.2024.104163",
+    tags: ["tuberculosis", "infections", "zebrafish", "review"],
+  },
+  // 2023
+  {
+    authors: "Yin J, Zhao G, Kalirai H, Coupland SE, Jochemsen AG, <strong>Forn-Cuní G</strong>, Wierenga APA, Jager MJ, Snaar-Jagalska BE, Groenewoud A",
+    title: "Zebrafish Patient-Derived Xenograft Model as a Preclinical Platform for Uveal Melanoma Drug Discovery",
+    journal: "Pharmaceuticals",
+    year: 2023,
+    doi: "10.3390/ph16040598",
+    tags: ["cancer", "zebrafish"],
+  },
+  {
+    authors: "Boland R, Heemskerk MT, <strong>Forn-Cuní G</strong>, Korbee CJ, Walburg KV, Esselink JJ, Carvalho Dos Santos C, De Waal AM, Van Der Hoeven DCM, Van Der Sar E, De Ries AS, Xie J, Spaink HP, Van Der Vaart M, Haks MC, Meijer AH, Ottenhoff THM",
+    title: "Repurposing Tamoxifen as Potential Host-Directed Therapeutic for Tuberculosis",
+    journal: "mBio",
+    year: 2023,
+    doi: "10.1128/mbio.03024-22",
+    tags: ["tuberculosis", "infections", "zebrafish", "metabolism"],
+  },
+  {
+    authors: "Hu W, Koch BEV, Lamers GEM, <strong>Forn-Cuní G</strong>, Spaink HP",
+    title: "Specificity of the innate immune responses to different classes of non-tuberculous mycobacteria",
+    journal: "Front Immunol",
+    year: 2023,
+    doi: "10.3389/fimmu.2022.1075473",
+    tags: ["tuberculosis", "infections", "zebrafish", "metabolism"],
+  },
+  {
+    authors: "Hu W, Liu L, <strong>Forn-Cuní G</strong>, Ding Y, Alia A, Spaink H",
+    title: "Transcriptomic and Metabolomic Studies Reveal That Toll-like Receptor 2 Has a Role in Glucose-Related Metabolism in Unchallenged Zebrafish Larvae",
+    journal: "Biology",
+    year: 2023,
+    doi: "10.3390/biology12020323",
+    tags: ["zebrafish", "metabolism"],
+  },
+  // 2022
+  {
+    authors: "<strong>Forn-Cuní G</strong>, Welvaarts L, Stel FM, van den Hondel CJ, Arentshorst M, Ram AFJ, Meijer AH",
+    title: "Stimulating the autophagic-lysosomal axis enhances host defense against fungal infection in a zebrafish model of invasive Aspergillosis",
+    journal: "Autophagy",
+    year: 2022,
+    doi: "10.1080/15548627.2022.2090727",
+    tags: ["fungal", "infections", "zebrafish", "first-author", "corresponding", "metabolism"],
+  },
+  {
+    authors: "Groenewoud A, <strong>Forn-Cuní G</strong>, Engel FB, Snaar-Jagalska BE",
+    title: "XePhIR: the zebrafish xenograft phenotype interactive repository",
+    journal: "Database (Oxford)",
+    year: 2022,
+    doi: "10.1093/database/baac028",
+    tags: ["cancer", "zebrafish", "first-author"],
+  },
+  {
+    authors: "Gazzi T, Brennecke B, Atz K, Korn C, Sykes D, <strong>Forn-Cuní G</strong>, Pfaff P, Sarott RC, Westphal MV, Mostinski Y, Mach L, Wasinska-Kalwa M, Weise M, Hoare BL, Miljuš T, Mexi M, Roth N, Koers EJ, Guba W, Alker A, Rufer AC, Kusznir EA, Huber S, Raposo C, Zirwes EA, Osterwald A, Pavlovic A, Moes S, Beck J, Nettekoven M, Benito-Cuesta I, Grande T, Drawnel F, Widmer G, Holzer D, van der Wel T, Mandhair H, Honer M, Fingerle J, Scheffel J, Broichhagen J, Gawrisch K, Romero J, Hillard CJ, Varga ZV, van der Stelt M, Pacher P, Gertsch J, Ullmer C, McCormick PJ, Oddi S, Spaink HP, Maccarrone M, Veprintsev DB, Carreira EM, Grether U, Nazaré M",
+    title: "Detection of cannabinoid receptor type 2 in native cells and zebrafish with a highly potent, cell-permeable fluorescent probe",
+    journal: "Chem Sci",
+    year: 2022,
+    doi: "10.1039/D1SC06659E",
+    tags: ["zebrafish"],
+  },
+  // 2021
+  {
+    authors: "Saxena S, Spaink HP, <strong>Forn-Cuní G</strong>",
+    title: "Drug Resistance in Nontuberculous Mycobacteria: Mechanisms and Models",
+    journal: "Biology (Basel)",
+    year: 2021,
+    doi: "10.3390/biology10020096",
+    tags: ["tuberculosis", "infections", "corresponding", "review"],
+  },
+  {
+    authors: "Ding Y, Haks MC, <strong>Forn-Cuní G</strong>, He J, Nowik N, Harms AC, Hankemeier T, Eeza MNH, Matysik J, Alia A, Spaink HP",
+    title: "Metabolomic and transcriptomic profiling of adult mice and larval zebrafish leptin mutants reveal a common pattern of changes in metabolites and signaling pathways",
+    journal: "Cell Biosci",
+    year: 2021,
+    doi: "10.1186/s13578-021-00642-0",
+    tags: ["zebrafish", "metabolism"],
+  },
+  {
+    authors: "Keizer EM, Valdes ID, <strong>Forn-Cuní G</strong>, Klijn E, Meijer AH, Hillman F, Wösten HAB, De Cock H",
+    title: "Variation of virulence of five Aspergillus fumigatus isolates in four different infection models",
+    journal: "PLoS One",
+    year: 2021,
+    doi: "10.1371/journal.pone.0252948",
+    tags: ["fungal", "infections", "zebrafish"],
+  },
+  // 2020
+  {
+    authors: "Zhang R, Varela M, <strong>Forn-Cuní G</strong>, Torraca V, van der Vaart M, Meijer AH",
+    title: "Deficiency in the autophagy modulator Dram1 exacerbates pyroptotic cell death of Mycobacteria-infected macrophages",
+    journal: "Cell Death Dis",
+    year: 2020,
+    doi: "10.1038/s41419-020-2477-1",
+    tags: ["tuberculosis", "infections", "zebrafish", "metabolism"],
+  },
+  {
+    authors: "<strong>Forn-Cuní G</strong>, Fulton KM, Smith JC, Twine SM, Mendoza-Barberà E, Tomás JM, Merino S",
+    title: "Polar Flagella Glycosylation in Aeromonas: Genomic Characterization and Involvement of a Specific Glycosyltransferase (Fgi-1) in Heterogeneous Flagella Glycosylation",
+    journal: "Front Microbiol",
+    year: 2020,
+    doi: "10.3389/fmicb.2020.595697",
+    tags: ["first-author"],
+  },
+  {
+    authors: "van Leeuwe TM, Arentshorst M, <strong>Forn-Cuní G</strong>, Geoffrion N, Tsang A, Delvigne F, Meijer AH, Ram AFJ, Punt PJ",
+    title: "Deletion of the Aspergillus niger Pro-Protein Processing Protease Gene kexB Results in a pH-Dependent Morphological Transition",
+    journal: "Microorganisms",
+    year: 2020,
+    doi: "10.3390/microorganisms8121918",
+    tags: ["fungal", "infections"],
+  },
+  {
+    authors: "van Leeuwe TM, Wattjes J, Niehues A, <strong>Forn-Cuní G</strong>, Geoffrion N, Mélida H, Arentshorst M, Molina A, Tsang A, Meijer AH, Moerschbacher BM, Punt PJ, Ram AFJ",
+    title: "A seven-membered cell wall related transglycosylase gene family in Aspergillus niger is relevant for cell wall integrity",
+    journal: "Cell Surf",
+    year: 2020,
+    doi: "10.1016/j.tcsw.2020.100039",
+    tags: ["fungal", "infections"],
+  },
+  {
+    authors: "van der Vaart M, Banducci-Karp A, <strong>Forn-Cuní G</strong>, Witt PMM, Willemse JJ, Sánchez SM, Hosseini R, Meijer AH",
+    title: "DRAM1 requires PI(3,5)P2 generation by PIKfyve to deliver vesicles and their cargo to endolysosomes",
+    journal: "bioRxiv",
+    year: 2020,
+    doi: "10.1101/2020.12.15.422832",
+    tags: ["zebrafish", "metabolism", "preprint"],
+  },
+  // 2019
+  {
+    authors: "<strong>Forn-Cuní G</strong>, Meijer AH, Varela M",
+    title: "Zebrafish in Inflammasome Research",
+    journal: "Cells",
+    year: 2019,
+    doi: "10.3390/cells8080901",
+    tags: ["zebrafish", "first-author", "metabolism", "review"],
+  },
+  {
+    authors: "Zhang R, Varela M, Vallentgoed W, <strong>Forn-Cuní G</strong>, van der Vaart M, Meijer AH",
+    title: "The selective autophagy receptors Optineurin and p62 are both required for zebrafish host resistance to mycobacterial infection",
+    journal: "PLoS Pathog",
+    year: 2019,
+    doi: "10.1371/journal.ppat.1007329",
+    tags: ["tuberculosis", "infections", "zebrafish", "metabolism"],
+  },
+  {
+    authors: "Novoa B, Pereiro P, López-Muñoz A, Varela M, <strong>Forn-Cuní G</strong>, Anchelin M, Dios S, Romero A, Martinez-López A, Medina-Gali RM, Collado M, Coll J, Estepa A, Cayuela ML, Mulero V, Figueras A",
+    title: "Rag1 immunodeficiency-induced early aging and senescence in zebrafish are dependent on chronic inflammation and oxidative stress",
+    journal: "Aging Cell",
+    year: 2019,
+    doi: "10.1111/acel.13020",
+    tags: ["zebrafish"],
+  },
+  // 2018
+  {
+    authors: "Moreira R, Balseiro P, <strong>Forn-Cuní G</strong>, Milan M, Bargelloni L, Novoa B, Figueras A",
+    title: "Bivalve transcriptomics reveal pathogen sequences and a powerful immune response of the Mediterranean mussel (Mytilus galloprovincialis)",
+    journal: "Mar Biol",
+    year: 2018,
+    doi: "10.1007/s00227-018-3308-0",
+    tags: [],
+  },
+  {
+    authors: "<strong>Forn-Cuní G</strong>, Tavakkoliamol Z, Tomás JM",
+    title: "Plesiomonas",
+    journal: "Handbook of Foodborne Diseases (CRC Press)",
+    year: 2018,
+    tags: ["first-author", "review"],
+  },
+  // 2017
+  {
+    authors: "<strong>Forn-Cuní G</strong>, Varela M, Pereiro P, Novoa B, Figueras A",
+    title: "Conserved gene regulation during acute inflammation between zebrafish and mammals",
+    journal: "Sci Rep",
+    year: 2017,
+    doi: "10.1038/srep41905",
+    tags: ["zebrafish", "first-author", "metabolism"],
+  },
+  {
+    authors: "<strong>Forn-Cuní G</strong>, Merino S, Tomás JM",
+    title: "Comparative Genomics of the Aeromonadaceae Core Oligosaccharide Biosynthetic Regions",
+    journal: "Int J Mol Sci",
+    year: 2017,
+    doi: "10.3390/ijms18030519",
+    tags: ["first-author"],
+  },
+  {
+    authors: "Pereiro P, <strong>Forn-Cuní G</strong>, Dios S, Coll J, Figueras A, Novoa B",
+    title: "Interferon-independent antiviral activity of 25-hydroxycholesterol in a teleost fish",
+    journal: "Antiviral Res",
+    year: 2017,
+    doi: "10.1016/j.antiviral.2017.08.003",
+    tags: ["zebrafish"],
+  },
+  // 2016
+  {
+    authors: "Figueras A, Robledo D, Corvelo A, Hermida M, Pereiro P, Rubiolo JA, Gómez-Garrido J, Carreté L, Bello X, Gut M, Gut IG, Marcet-Houben M, <strong>Forn-Cuní G</strong>, Galán B, García JL, Abal-Fabeiro JL, Pardo BG, Taboada X, Fernández C, Vlasova A, Hermoso-Pulido A, Guigó R, Álvarez-Dios JA, Gómez-Tato A, Viñas A, Maside X, Gabaldón T, Novoa B, Bouza C, Alioto T, Martínez P",
+    title: "Whole genome sequencing of turbot (Scophthalmus maximus; Pleuronectiformes): a fish adapted to demersal life",
+    journal: "DNA Res",
+    year: 2016,
+    doi: "10.1093/dnares/dsw007",
+    tags: [],
+  },
+  {
+    authors: "<strong>Forn-Cuní G</strong>, Tomás JM, Merino S",
+    title: "Whole-Genome Sequence of Aeromonas hydrophila Strain AH-1 (Serotype O11)",
+    journal: "Genome Announc",
+    year: 2016,
+    doi: "10.1128/genomeA.00920-16",
+    tags: ["first-author"],
+  },
+  {
+    authors: "<strong>Forn-Cuní G</strong>, Tomás JM, Merino S",
+    title: "Genome Sequence of Aeromonas hydrophila Strain AH-3 (Serotype O34)",
+    journal: "Genome Announc",
+    year: 2016,
+    doi: "10.1128/genomeA.00919-16",
+    tags: ["first-author"],
+  },
+  {
+    authors: "Pereiro P, Forn-Cuní G, Figueras A, Novoa B",
+    title: "Pathogen-dependent role of turbot (Scophthalmus maximus) interferon-gamma",
+    journal: "Fish Shellfish Immunol",
+    year: 2016,
+    doi: "10.1016/j.fsi.2016.10.021",
+    tags: [],
+  },
+  {
+    authors: "Varela M, <strong>Forn-Cuní G</strong>, Dios S, Figueras A, Novoa B",
+    title: "Proinflammatory Caspase A Activation and an Antiviral State Are Induced by a Zebrafish Perforin after Possible Cellular and Functional Diversification from a Myeloid Ancestor",
+    journal: "J Innate Immun",
+    year: 2016,
+    doi: "10.1159/000431287",
+    tags: ["zebrafish"],
+  },
+  // 2015
+  {
+    authors: "<strong>Forn-Cuní G</strong>, Varela M, Fernández-Rodríguez CM, Figueras A, Novoa B",
+    title: "Liver immune responses to inflammatory stimuli in a diet-induced obesity model of zebrafish",
+    journal: "J Endocrinol",
+    year: 2015,
+    doi: "10.1530/JOE-14-0398",
+    tags: ["zebrafish", "first-author", "metabolism"],
+  },
+  {
+    authors: "Romero A, <strong>Forn-Cuní G</strong>, Moreira R, Milan M, Bargelloni L, Figueras A, Novoa B",
+    title: "An immune-enriched oligo-microarray analysis of gene expression in Manila clam (Venerupis philippinarum) haemocytes after a Perkinsus olseni challenge",
+    journal: "Fish Shellfish Immunol",
+    year: 2015,
+    doi: "10.1016/j.fsi.2014.12.029",
+    tags: [],
+  },
+  // 2014
+  {
+    authors: "<strong>Forn-Cuní G</strong>, Reis ES, Dios S, Posada D, Lambris JD, Figueras A, Novoa B",
+    title: "The evolution and appearance of C3 duplications in fish originate an exclusive teleost c3 gene form with anti-inflammatory activity",
+    journal: "PLoS One",
+    year: 2014,
+    doi: "10.1371/journal.pone.0099673",
+    tags: ["zebrafish", "first-author"],
+  },
+  {
+    authors: "Varela M, Diaz-Rosales P, Pereiro P, <strong>Forn-Cuní G</strong>, Costa MM, Dios S, Romero A, Figueras A, Novoa B",
+    title: "Interferon-induced genes of the expanded IFIT family show conserved antiviral activities in non-mammalian species",
+    journal: "PLoS One",
+    year: 2014,
+    doi: "10.1371/journal.pone.0100015",
+    tags: ["zebrafish"],
+  },
+  {
+    authors: "Romero A, Costa M, <strong>Forn-Cuní G</strong>, Balseiro P, Chamorro R, Dios S, Figueras A, Novoa B",
+    title: "Occurrence, seasonality and infectivity of Vibrio strains in natural populations of mussels Mytilus galloprovincialis",
+    journal: "Dis Aquat Organ",
+    year: 2014,
+    doi: "10.3354/dao02701",
+    tags: [],
+  },
+  // 2013
+  {
+    authors: "Costa MM, Saraceni PR, <strong>Forn-Cuní G</strong>, Dios S, Romero A, Figueras A, Novoa B",
+    title: "IL-22 is a key player in the regulation of inflammation in fish and involves innate immune cells and PI3K signaling",
+    journal: "Dev Comp Immunol",
+    year: 2013,
+    doi: "10.1016/j.dci.2013.08.021",
+    tags: ["zebrafish"],
+  },
+  // 2012
+  {
+    authors: "Pereiro P, Balseiro P, Romero A, Dios S, <strong>Forn-Cuní G</strong>, Fuste B, Planas JV, Beltran S, Novoa B, Figueras A",
+    title: "High-throughput sequence analysis of turbot (Scophthalmus maximus) transcriptome using 454-pyrosequencing for the discovery of antiviral immune genes",
+    journal: "PLoS One",
+    year: 2012,
+    doi: "10.1371/journal.pone.0035369",
+    tags: [],
+  },
+];
+---
+
+<Layout title="Publications — Gabriel Forn-Cuní">
+
+  <PageHeader
+    title="Publications"
+    gradient="bg-gradient-indigo-teal"
+    description="I have authored 41 peer-reviewed publications (12 as first author, 3 as corresponding author) with over 1900 citations and an h-index of 24, in the topics of macrophage immunometabolism and zebrafish models applied to infection and cancer."
+  >
+    <div class="flex items-center gap-4 mt-5">
+      <a
+        href="https://orcid.org/0000-0001-5976-4759"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+      >
+        <svg viewBox="0 0 24 24" class="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true">
+          <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.881-1.588 3.881-3.722 0-2.016-1.472-3.722-3.881-3.722h-2.297z"/>
+        </svg>
+        ORCID 0000-0001-5976-4759
+      </a>
+      <a
+        href="https://scholar.google.com/citations?hl=en&user=OqZn738AAAAJ&view_op=list_works&sortby=pubdate&inst=16531331944977832951"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+      >
+        <svg viewBox="0 0 24 24" class="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true">
+          <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
+        </svg>
+        Google Scholar
+      </a>
+      <a
+        href="https://pubmed.ncbi.nlm.nih.gov/?term=Forn-Cuni[Author]&sort=date"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 text-sm text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+      >
+        <svg viewBox="0 0 150 95.3" class="w-5 h-3 shrink-0" fill="currentColor" aria-hidden="true">
+          <path d="m 111.009,95.3 26.1-47.7-26-47.6h6.5c3.6 0 7.9 2.6 9.6 5.7l22.8 41.9-22.9 41.9c-1.7 3.2-6.1 5.7-9.6 5.7h-6.5z"/>
+          <path d="M8.7 0C3.9 0 0 3.9 0 8.8V86.5c0 4.8 3.9 8.8 8.7 8.8H104.5l26.1-47.7L104.5 0Zm5.9 26.4h7.8l19.2 31.4h.1V26.4h7V69H40.9L21.8 37.7h-.2V69h-7ZM56 26.4h7.4V69H56Zm14.7 0h7.4v16.9h19.2V26.4h7.3V69h-7.3V49.8H78.1V69h-7.4z"/>
+        </svg>
+        PubMed
+      </a>
+    </div>
+  </PageHeader>
+
+  <Section class="py-12">
+    <TextBlock>
+
+      <!-- Filters -->
+      <div id="pub-filters" class="mt-0 space-y-2">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-sm font-medium text-gray-400 dark:text-gray-500 mr-1">Filter by:</span>
+          <button class="filter-btn" data-tag="first-author">First Author</button>
+          <button class="filter-btn" data-tag="corresponding">Corresponding Author</button>
+          <button class="filter-btn" data-tag="review">Review</button>
+          <button class="filter-btn" data-tag="preprint">Preprint</button>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <button class="filter-btn" data-tag="metabolism">Metabolism</button>
+          <button class="filter-btn" data-tag="cancer">Cancer</button>
+          <button class="filter-btn" data-tag="infections">Infections</button>
+          <button class="filter-btn" data-tag="zebrafish">Zebrafish Models</button>
+        </div>
+      </div>
+
+      <!-- Count -->
+      <p id="pub-count" class="mt-4 text-sm text-gray-400 dark:text-gray-500"></p>
+
+      <!-- Publication list -->
+      <ol id="pub-list" class="mt-6 space-y-4 list-decimal list-inside">
+        {publications.map((pub) => (
+          <li
+            class="pub-item leading-relaxed"
+            data-tags={pub.tags.join(" ")}
+          >
+            <span set:html={pub.authors} />.{" "}
+            {pub.doi ? (
+              <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener" class="transition-colors">{pub.title}</a>
+            ) : (
+              <span class="italic">{pub.title}</span>
+            )}.{" "}
+            <span class="text-gray-400 dark:text-gray-500 italic">{pub.journal}</span>{" "}
+            <span class="text-gray-400 dark:text-gray-500">({pub.year})</span>
+            {pub.tags.includes("first-author") && (
+              <span class="ml-2 inline-block text-xs px-1.5 py-0.5 rounded bg-accent-cyan/15 text-accent-cyan">first author</span>
+            )}
+            {pub.tags.includes("corresponding") && (
+              <span class="ml-1 inline-block text-xs px-1.5 py-0.5 rounded bg-accent-magenta/15 text-accent-magenta">corresponding author</span>
+            )}
+            {pub.tags.includes("review") && (
+              <span class="ml-1 inline-block text-xs px-1.5 py-0.5 rounded bg-accent-yellow/15 text-accent-yellow">review</span>
+            )}
+            {pub.tags.includes("preprint") && (
+              <span class="ml-1 inline-block text-xs px-1.5 py-0.5 rounded bg-gray-200 dark:bg-white/10 text-gray-500 dark:text-gray-400">preprint</span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </TextBlock>
+  </Section>
+
+</Layout>
+
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const items = document.querySelectorAll<HTMLLIElement>(".pub-item");
+  const countEl = document.getElementById("pub-count");
+
+  function updateCount(visible: number) {
+    if (countEl) {
+      const total = items.length;
+      countEl.textContent = visible === total
+        ? `Showing all ${total} publications`
+        : `Showing ${visible} of ${total} publications`;
+    }
+  }
+
+  function applyFilters() {
+    const active = [...buttons]
+      .filter((btn) => btn.classList.contains("active"))
+      .map((btn) => btn.dataset.tag!);
+
+    let visible = 0;
+    items.forEach((item) => {
+      const tags = (item.dataset.tags ?? "").split(" ");
+      const show = active.length === 0 || active.some((t) => tags.includes(t));
+      item.style.display = show ? "" : "none";
+      if (show) visible++;
+    });
+
+    updateCount(visible);
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      btn.classList.toggle("active");
+      applyFilters();
+    });
+  });
+
+  updateCount(items.length);
+</script>

@@ -1,0 +1,24 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  gradient?: string;
+}
+
+const {
+  title,
+  description,
+  gradient = "bg-gradient-pink-teal",
+} = Astro.props;
+---
+
+<header class="relative flex flex-col w-full min-h-[65vh] bg-slate-100 dark:bg-gray-950 border-b border-gray-300 dark:border-white/10">
+  <div class={`absolute inset-0 z-0 ${gradient}`}></div>
+  <div class="relative z-10 flex flex-col flex-1 justify-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-24">
+    <h1 class="text-3xl md:text-4xl font-semibold text-gray-800 dark:text-white mb-6">{title}</h1>
+    {description && (
+      <p class="text-gray-500 dark:text-gray-300 text-lg leading-relaxed" set:html={description} />
+    )}
+    <slot />
+  </div>
+</header>

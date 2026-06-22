@@ -1,0 +1,120 @@
+@import "tailwindcss";
+@import "@fortawesome/fontawesome-free/css/fontawesome.css";
+@import "@fortawesome/fontawesome-free/css/solid.css";
+
+/* Class-based dark mode — toggled via .dark on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Accent color aliases ────────────────────────────────────────────────────
+   Light: soft pastel teal / rose / amber from the Tailwind palette
+   Dark:  more vibrant cyan / pink / yellow
+   ────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --accent-cyan:  var(--color-sky-600);
+  --accent-magenta:  var(--color-rose-600);
+  --accent-yellow: var(--color-amber-500);
+}
+
+.dark {
+  --accent-cyan:  var(--color-cyan-500);
+  --accent-magenta:  var(--color-pink-500);
+  --accent-yellow: var(--color-yellow-400);
+}
+
+@theme inline {
+  --color-accent-cyan:     var(--accent-cyan);
+  --color-accent-magenta:  var(--accent-magenta);
+  --color-accent-yellow:   var(--accent-yellow);
+}
+
+/* ── Theme toggle icons ──────────────────────────────────────────────────────
+   Explicit selectors beat specificity races with utility classes.
+   .icon-dark-only  → visible only when .dark is an ancestor (dark mode)
+   .icon-light-only → visible only when .dark is NOT an ancestor (light mode)
+   ────────────────────────────────────────────────────────────────────────── */
+
+.icon-dark-only  { display: none; }
+.dark .icon-dark-only  { display: inline; }
+
+.icon-light-only { display: inline; }
+.dark .icon-light-only { display: none; }
+
+/* ── Publications filter buttons ─────────────────────────────────────────── */
+
+.filter-btn {
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+  @apply border-gray-300 dark:border-white/15 text-gray-500 dark:text-gray-400;
+}
+.filter-btn:hover {
+  @apply border-gray-400 dark:border-white/30 text-gray-700 dark:text-gray-200;
+}
+.filter-btn.active {
+  @apply bg-gray-800 dark:bg-white border-gray-800 dark:border-white text-white dark:text-gray-900;
+}
+.pub-item strong {
+  @apply font-semibold text-gray-700 dark:text-gray-200;
+}
+
+/* ── Text links — underline + cycling hover accent colors ────────────────── */
+
+.text-block p a,
+.text-block li a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+body li:nth-child(3n+1) a:hover { color: var(--accent-cyan); }
+body li:nth-child(3n+2) a:hover { color: var(--accent-magenta); }
+body li:nth-child(3n+3) a:hover { color: var(--accent-yellow); }
+
+/* ── Page-header gradient backgrounds ────────────────────────────────────── */
+
+.bg-gradient-pink-teal,
+.bg-gradient-indigo-teal,
+.bg-gradient-amber-teal {
+  background-size: 200% 200%;
+  animation: gradient-drift 30s ease-in-out infinite;
+}
+
+.bg-gradient-pink-teal {
+  background: linear-gradient(
+    120deg,
+    oklch(65% 0.26 340 / 14%) 0%,
+    transparent 45%,
+    oklch(65% 0.14 180 / 12%) 100%
+  );
+  background-size: 200% 200%;
+}
+
+.bg-gradient-indigo-teal {
+  background: linear-gradient(
+    135deg,
+    oklch(55% 0.22 280 / 14%) 0%,
+    transparent 45%,
+    oklch(65% 0.14 180 / 12%) 100%
+  );
+  background-size: 200% 200%;
+}
+
+.bg-gradient-amber-teal {
+  background: linear-gradient(
+    108deg,
+    oklch(75% 0.15 75 / 10%) 0%,
+    transparent 50%,
+    oklch(65% 0.14 180 / 11%) 100%
+  );
+  background-size: 200% 200%;
+}
+
+@keyframes gradient-drift {
+  0%   { background-position: 0% 0%; }
+  33%  { background-position: 100% 50%; }
+  66%  { background-position: 30% 100%; }
+  100% { background-position: 0% 0%; }
+}
