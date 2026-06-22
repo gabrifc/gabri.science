@@ -5,7 +5,40 @@ import VideoHeader from "../components/VideoHeader.astro";
 
 <Layout title="Gabriel Forn-Cuní" navDark={true}>
   <VideoHeader
+    title="Gabriel Forn-Cuní, PhD"
     source="/assets/header.mp4"
     abstract="I am a senior postdoctoral researcher at Leiden University. I aim to understand <a href='/research/immunometabolism'><span class='font-bold hover:text-cyan-400 transition-colors'>macrophage plasticity</span> and <span class='font-bold hover:text-pink-400 transition-colors'>metabolic reprogramming</span></a> in disease pathogenesis to rationally design novel immune-targeting therapies. My approach integrates immunology, cell biology, pharmacology, and (single-cell) transcriptomic technologies with <a href='/research/zebrafish'><span class='font-bold hover:text-yellow-500 transition-colors'>zebrafish models</span></a> that I validated for translational potential in close collaboration with hospitals and the pharmaceutical industry."
-  />
+  >
+    <div class="flex items-center justify-center gap-4 mt-6">
+      <a href="/cv-gabriel-forn-cuni.pdf" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 text-sm text-white hover:text-cyan-400 transition-colors">
+        <svg viewBox="0 0 24 24" class="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true">
+          <path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1.5H8V13zm0 3h8v1.5H8V16zm0-6h3v1.5H8V10z"/>
+        </svg>
+        CV
+      </a>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Forn-Cuni[Author]&sort=date" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 text-sm text-white hover:text-pink-400 transition-colors">
+        <svg viewBox="0 0 150 95.3" class="w-5 h-3 shrink-0" fill="currentColor" aria-hidden="true">
+          <path d="m 111.009,95.3 26.1-47.7-26-47.6h6.5c3.6 0 7.9 2.6 9.6 5.7l22.8 41.9-22.9 41.9c-1.7 3.2-6.1 5.7-9.6 5.7h-6.5z"/>
+          <path d="M8.7 0C3.9 0 0 3.9 0 8.8V86.5c0 4.8 3.9 8.8 8.7 8.8H104.5l26.1-47.7L104.5 0Zm5.9 26.4h7.8l19.2 31.4h.1V26.4h7V69H40.9L21.8 37.7h-.2V69h-7ZM56 26.4h7.4V69H56Zm14.7 0h7.4v16.9h19.2V26.4h7.3V69h-7.3V49.8H78.1V69h-7.4z"/>
+        </svg>
+        PubMed
+      </a>
+      <a href="https://scholar.google.com/citations?hl=en&user=OqZn738AAAAJ&view_op=list_works&sortby=pubdate&inst=16531331944977832951" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 text-sm text-white hover:text-yellow-500 transition-colors">
+        <svg viewBox="0 0 24 24" class="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true">
+          <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/>
+        </svg>
+        Google Scholar
+      </a>
+      <a href="https://orcid.org/0000-0001-5976-4759" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 text-sm text-white hover:text-cyan-400 transition-colors">
+        <svg viewBox="0 0 24 24" class="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true">
+          <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.881-1.588 3.881-3.722 0-2.016-1.472-3.722-3.881-3.722h-2.297z"/>
+        </svg>
+        ORCID
+      </a>
+    </div>
+  </VideoHeader>
 </Layout>

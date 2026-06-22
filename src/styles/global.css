@@ -118,3 +118,11 @@ body li:nth-child(3n+3) a:hover { color: var(--accent-yellow); }
   66%  { background-position: 30% 100%; }
   100% { background-position: 0% 0%; }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-gradient-pink-teal,
+  .bg-gradient-indigo-teal,
+  .bg-gradient-amber-teal {
+    animation: none;
+  }
+}

@@ -12,6 +12,7 @@ const { title, abstract, source } = Astro.props as Props;
   <!-- Video background -->
   <div class="absolute inset-0 z-0">
     <video
+      id="bg-video"
       class="absolute !w-full h-full object-cover object-top-left"
       autoplay
       muted
@@ -30,6 +31,14 @@ const { title, abstract, source } = Astro.props as Props;
     )}
     <div class="text-center max-w-3xl">
       <p class="text-lg md:text-xl" set:html={abstract}></p>
+      <slot />
     </div>
   </div>
 </header>
+
+<script>
+  const video = document.getElementById("bg-video") as HTMLVideoElement | null;
+  if (video && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    video.pause();
+  }
+</script>
