@@ -1,7 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import PageHeader from "../../components/PageHeader.astro";
-import VideoGrid from "../../components/VideoGrid.astro";
+import Video from "../../components/Video.astro";
+import Figure from "../../components/Figure.astro";
 import Section from "../../components/Section.astro";
 import TextBlock from "../../components/TextBlock.astro";
 ---
@@ -9,7 +10,7 @@ import TextBlock from "../../components/TextBlock.astro";
 <Layout title="Zebrafish disease models — Gabriel Forn-Cuní">
 
   <PageHeader
-    title="Zebrafish disease models"
+    title="Zebrafish models of human disease"
     gradient="bg-gradient-amber-teal"
     description="Translating fundamental discoveries into therapies depends on models that capture human disease in a living context. Mammalian models are costly and low-throughput, while most in vitro systems lose the complex interplay between immune cells, pathogens, tumors, and surrounding tissues. Zebrafish larvae offer a third option: a small, transparent vertebrate with a functional innate immune system within days of fertilization. In these larvae, we can watch infection, cancer, and inflammation unfold in real time, at single-cell resolution, across a whole organism. But that potential is only realized if what we see in zebrafish models reflects human disease."
   />
@@ -30,13 +31,13 @@ import TextBlock from "../../components/TextBlock.astro";
         studying and improving the translatability of these models.
       </p>
       <p class="mt-6">
-        This realization came early in my career. In my first first-author publication, we
+        In my first first-author publication, we
         characterized 8 complement <em>c3</em> genes in zebrafish, including a teleost-specific
         duplication event that gave rise to an exclusive paralog with antagonistic immune function,
-        contrasting with only one <em>C3</em> gene in humans. This is a common occurrence among
+        contrasting with only one <em>C3</em> gene in humans. Lack of 1-to-1 orthology is a common occurrence among
         immune genes in zebrafish, as we characterized for interferon-induced proteins with
         tetratricopeptide repeats (<em>ifits</em>), perforins, or caspases and inflammasome
-        components. How do we translate the function of genes that do not exist in another organism?
+        components (Figure 1). How do we translate the function of genes that do not exist in another organism?
         If one of the main components of the complement cascade system, sitting at the base of
         inflammatory processes, does not translate, what does it mean for all inflammatory research
         in zebrafish? This is particularly significant given the debates questioning the
@@ -44,6 +45,14 @@ import TextBlock from "../../components/TextBlock.astro";
         differences in gene modulation during inflammation. If murine models are questioned, what is
         the relevance of evolutionarily distant species for modeling human diseases?
       </p>
+      <Figure
+          source="/assets/zebrafish-models-1.png"
+          alt=" Reconciliation of the zebrafish and human caspase-1 gene evolution. Both the zebrafish and human caspase-1 genes have undergone independent duplication events, resulting in the presence of 4 caspase-1 family genes in each species, but with distinct evolutionary trajectories."
+          label="Figure 1"
+          darkMode="invert"
+          caption="Reconciliation of the zebrafish and human caspase-1 gene evolution. Both the zebrafish and human caspase-1 genes have undergone independent duplication events, resulting in the presence of 4 caspase-1 family genes in each species, but with distinct evolutionary trajectories. From Forn-Cuní et al., <em>Cells</em>, 2019."
+          doi="10.3390/cells8080901"
+        />
       <p class="mt-6">
         During my PhD, I showed that, despite species-specific sensitivities and physiologies (like
         the <em>c3</em> paralogs characterized above), zebrafish exhibit a conserved inflammatory
@@ -58,6 +67,12 @@ import TextBlock from "../../components/TextBlock.astro";
         specific cell types inside a whole-organism context (phagocytes interacting with conidia at
         infection onset, single-cell transcriptomics).
       </p>
+      <Video
+        source="/assets/zebrafish-models-2.mp4"
+        label="Video 1"
+        caption="Timelapse showing <span class='font-semibold text-accent-magenta'>macrophage-mediated</span> (magenta) angiogenesis in a zebrafish larvae with <span class='font-semibold text-accent-cyan'>fluorescent blood vessels</span> (cyan) after engraftment of <span class='font-semibold text-accent-yellow'>human glycolytic tumor cells</span> (yellow). From Yin and Forn-Cuní et al., <em>Angiogenesis</em>, 2024."
+        doi="10.1007/s10456-024-09930-y"
+      />
       <p class="mt-6">
         While I am fully convinced that the zebrafish constitutes an exceptional platform for
         real-time study of the bases of immunometabolism regulation in vivo, I am equally aware that
@@ -68,6 +83,12 @@ import TextBlock from "../../components/TextBlock.astro";
       </p>
     </TextBlock>
   </Section>
+
+  <Video
+    source="/assets/zebrafish-models-3.mp4"
+    label="Video 2"
+    caption="Treating zebrafish larvae with a waterborne drug is as straightforward as shown in this video, where I pipette Rifampicin to 15 larvae infected with <em>Mycobacterium avium</em> in a single well of a 6-well plate, but how much of the drug actually reaches the granulomas, and how much of it is active? <em>Forn-Cuní, unpublished, 2020.</em>"
+  />
 
   <Section class="py-12">
     <TextBlock>
